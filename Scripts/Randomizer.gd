@@ -2,9 +2,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-func Initialize(seed: String = "default"):
-	var s = seed.hash()
-	rng.seed = s;
+func Initialize(s: String = "default"):
+	rng.seed = s.hash()
 
 func SimplexGrid(width: int, height: int, frequency: float = 0.01) -> Array:
 	var noise = FastNoiseLite.new()

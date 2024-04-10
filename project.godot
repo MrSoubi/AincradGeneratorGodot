@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Randomizer="*res://Scripts/Randomizer.gd"
 Utils="*res://Scripts/Utils.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [input]
 
 jump={

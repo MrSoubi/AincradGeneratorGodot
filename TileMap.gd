@@ -16,9 +16,15 @@ var size: int
 func _ready():
 	size = 35
 	
+	_center()
+	
 	Randomizer.Initialize("fhgsh");
 	
 	_regen()
+
+func _center():
+	position.x = get_viewport_rect().size.x / 2 - (size * 16 / 2)
+	position.y = get_viewport_rect().size.y / 2 - (size * 16 / 2)
 
 func _regen():
 	_generateFloor()
@@ -39,10 +45,10 @@ func _setVillage():
 	village_Pos = pos
 	set_cell(0, village_Pos, 0, village_Tile);
 
-func _setDungeon(distance: int = size/2):
+func _setDungeon(distanceMin: int = size/2):
 	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
 	
-	while (Utils.distanceVector2i(pos, village_Pos) < size/2.):
+	while (Utils.distanceVector2i(pos, village_Pos) < distanceMin):
 		pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
 	
 	dungeon_Pos = pos
