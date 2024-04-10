@@ -4,6 +4,11 @@ extends TileMap
 
 const dirt_Tile: Vector2i = Vector2i(9, 7)
 const water_Tile: Vector2i = Vector2i(1, 11)
+const village_Tile: Vector2i = Vector2i(11, 15)
+const dungeon_Tile: Vector2i = Vector2i(15, 17)
+
+var village_Pos: Vector2i;
+var dungeon_Pos: Vector2i;
 
 var size: int
 
@@ -11,11 +16,37 @@ var size: int
 func _ready():
 	size = 35
 	
-	Randomizer.Initialize();
+	Randomizer.Initialize("fhgsh");
 	
+	_regen()
+
+func _regen():
 	_generateFloor()
 	_generateRiver()
+	_setVillage()
+	_setDungeon()
+
+func _input(event):
+	if event.is_action_pressed("jump"):
+		_regen();
+
+func _setVillage():
+	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(size/2, size-1))
 	
+	while (get_cell_atlas_coords(0, pos) != dirt_Tile):
+		pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(size/2, size-1))
+	
+	village_Pos = pos
+	set_cell(0, village_Pos, 0, village_Tile);
+
+func _setDungeon(distance: int = size/2):
+	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
+	
+	while (Utils.distanceVector2i(pos, village_Pos) < size/2.):
+		pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
+	
+	dungeon_Pos = pos
+	set_cell(0, pos, 0, dungeon_Tile);
 
 func _generateFloor():
 	for i in size:
@@ -23,7 +54,7 @@ func _generateFloor():
 			set_cell(0, Vector2i(i,j), 0, dirt_Tile)
 
 func _generateRiver():
-	var simplexArray = Randomizer.SimplexGrid(size, size);
+	var simplexArray = Randomizer.SimplexGrid(size, size, 0.05);
 	
 	# We start by getting the position of the highest value in the first row of the noise image
 	var river = []
@@ -48,7 +79,6 @@ func _generateRiver():
 			if (localCell.x >= size):
 				localCell.x -= 1
 			
-			print(localCell)
 			if (simplexArray[localCell.x][localCell.y] > simplexArray[river[i].x][river[i].y]):
 				river[i] = localCell
 	

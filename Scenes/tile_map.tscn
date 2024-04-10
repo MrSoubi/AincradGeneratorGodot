@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://TileMap.gd" id="2_w7m4t"]
 
 [node name="TileMap" type="TileMap"]
-position = Vector2(566, 199)
+position = Vector2(129, 97)
 tile_set = ExtResource("1_eqvaq")
 format = 2
 script = ExtResource("2_w7m4t")
