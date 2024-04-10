@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="AincradGenerator"
-run/main_scene="res://Kenney/tile_map.tscn"
+run/main_scene="res://Scenes/tile_map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Randomizer="*res://Scripts/Randomizer.gd"
 
 [display]
 

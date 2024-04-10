@@ -11,6 +11,8 @@ var size: int
 func _ready():
 	size = 35
 	
+	Randomizer.Initialize();
+	
 	_generateFloor()
 	_generateRiver()
 	
@@ -21,18 +23,14 @@ func _generateFloor():
 			set_cell(0, Vector2i(i,j), 0, dirt_Tile)
 
 func _generateRiver():
-	# We generate a noise image of the same size as the level
-	var noise = FastNoiseLite.new()
-	noise.seed = randi()
-	noise.frequency = 0.03
-	var noiseImage: Image = noise.get_image(size, size)
+	var simplexArray = Randomizer.SimplexGrid(size, size);
 	
 	# We start by getting the position of the highest value in the first row of the noise image
 	var river = []
 	river.append(Vector2i(size/2, 0))
 	
 	for i in range(0, size):
-		if (noiseImage.get_pixel(i, 0).get_luminance() > noiseImage.get_pixelv(river[0]).get_luminance()):
+		if (simplexArray[i][0] > simplexArray[river[0].x][river[0].y]):
 			river[0].x = i
 	
 	for i in range(1, size):
@@ -51,7 +49,7 @@ func _generateRiver():
 				localCell.x -= 1
 			
 			print(localCell)
-			if (noiseImage.get_pixelv(localCell).get_luminance() > noiseImage.get_pixelv(river[i]).get_luminance()):
+			if (simplexArray[localCell.x][localCell.y] > simplexArray[river[i].x][river[i].y]):
 				river[i] = localCell
 	
 	for i in river:

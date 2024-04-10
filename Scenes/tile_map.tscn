@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c041kehlayelc"]
+
+[ext_resource type="TileSet" uid="uid://txodfrdxx2mp" path="res://Kenney/Dungeon_TileSet.tres" id="1_eqvaq"]
+[ext_resource type="Script" path="res://TileMap.gd" id="2_w7m4t"]
+
+[node name="TileMap" type="TileMap"]
+position = Vector2(566, 199)
+tile_set = ExtResource("1_eqvaq")
+format = 2
+script = ExtResource("2_w7m4t")
+tileSet = ExtResource("1_eqvaq")
