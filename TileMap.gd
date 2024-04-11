@@ -23,8 +23,8 @@ func _ready():
 	_regen()
 
 func _center():
-	position.x = get_viewport_rect().size.x / 2 - (size * 16 / 2)
-	position.y = get_viewport_rect().size.y / 2 - (size * 16 / 2)
+	position.x = - (size * 8)
+	position.y = - (size * 8)
 
 func _regen():
 	_generateFloor()
