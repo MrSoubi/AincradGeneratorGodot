@@ -12,21 +12,13 @@ var dungeon_Pos: Vector2i;
 
 var size: int
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	size = 35
-	
-	_center()
-	
-	Randomizer.Initialize("fhgsh");
-	
-	_regen()
-
 func _center():
 	position.x = - (size * 8)
 	position.y = - (size * 8)
 
-func _regen():
+func Gen(level: int):
+	size = 36 - level
+	_center()
 	_generateFloor()
 	_generateRiver()
 	_setVillage()
@@ -34,7 +26,7 @@ func _regen():
 
 func _input(event):
 	if event.is_action_pressed("jump"):
-		_regen();
+		Gen(1);
 
 func _setVillage():
 	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(size/2, size-1))

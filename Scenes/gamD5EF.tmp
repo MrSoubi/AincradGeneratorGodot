@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dia6mp6hivd2y"]
+[gd_scene load_steps=5 format=3 uid="uid://dia6mp6hivd2y"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_pkbbj"]
 [ext_resource type="PackedScene" uid="uid://c041kehlayelc" path="res://Scenes/tile_map.tscn" id="1_uvumk"]
 [ext_resource type="PackedScene" uid="uid://xqh66xwtpgxe" path="res://Scenes/ui.tscn" id="2_34hcv"]
 [ext_resource type="PackedScene" uid="uid://cc2ybife7qgts" path="res://Scenes/player.tscn" id="4_gbmti"]
-[ext_resource type="Script" path="res://Scenes/player.gd" id="5_kjd8w"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("tile_map", "world")]
 script = ExtResource("1_pkbbj")
 tile_map = NodePath("World/TileMap")
 world = NodePath("World")
-
-[node name="UI" parent="." instance=ExtResource("2_34hcv")]
 
 [node name="World" type="Node2D" parent="."]
 position = Vector2(960, 540)
@@ -20,4 +17,5 @@ position = Vector2(960, 540)
 position = Vector2(0, 0)
 
 [node name="Player" parent="World" instance=ExtResource("4_gbmti")]
-script = ExtResource("5_kjd8w")
+
+[node name="UI" parent="." instance=ExtResource("2_34hcv")]

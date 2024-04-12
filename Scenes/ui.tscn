@@ -1,0 +1,209 @@
+[gd_scene load_steps=2 format=3 uid="uid://xqh66xwtpgxe"]
+
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="1_tj62d"]
+
+[node name="UI" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_tj62d")
+
+[node name="BackGround" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="BackGround"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0, 0, 1)
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_right = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="ColorRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.858824, 0.356863, 0.164706, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/BackGround"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Margin_Top" type="MarginContainer" parent="MainMenu/BackGround/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label_Title" type="Label" parent="MainMenu/BackGround/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+text = "Butter Knife Art Offline"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container_Buttons" type="VBoxContainer" parent="MainMenu/BackGround/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+
+[node name="Button_Play" type="Button" parent="MainMenu/BackGround/VBoxContainer/Container_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "Play"
+
+[node name="Button_Settings" type="Button" parent="MainMenu/BackGround/VBoxContainer/Container_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "Settings"
+
+[node name="Button_Quit" type="Button" parent="MainMenu/BackGround/VBoxContainer/Container_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "Quit"
+
+[node name="Label_Credits" type="Label" parent="MainMenu/BackGround/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Emmanuel Bouis - For Alex - 2024"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin_Bottom" type="MarginContainer" parent="MainMenu/BackGround/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="GenerationMenu" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GenerationMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.858824, 0.356863, 0.164706, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GenerationMenu/ColorRect"]
+custom_minimum_size = Vector2(158.8, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -35.0
+offset_right = 40.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container_Seed" type="HBoxContainer" parent="GenerationMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label_Seed" type="Label" parent="GenerationMenu/ColorRect/VBoxContainer/Container_Seed"]
+layout_mode = 2
+text = "Seed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit_Seed" type="LineEdit" parent="GenerationMenu/ColorRect/VBoxContainer/Container_Seed"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button_SeedValidation" type="Button" parent="GenerationMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Generate"
+
+[node name="HUD" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.858824, 0.356863, 0.164706, 0.501961)
+
+[node name="Container_Top" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -11.5
+offset_right = 26.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label_Level" type="Label" parent="HUD/Container_Top"]
+layout_mode = 2
+text = "Level : "
+vertical_alignment = 1
+
+[node name="Label_LevelValue" type="Label" parent="HUD/Container_Top"]
+layout_mode = 2
+text = "###"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenu/BackGround/VBoxContainer/Container_Buttons/Button_Play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MainMenu/BackGround/VBoxContainer/Container_Buttons/Button_Settings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="MainMenu/BackGround/VBoxContainer/Container_Buttons/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="GenerationMenu/ColorRect/VBoxContainer/Button_SeedValidation" to="." method="_on_button_seed_validation_pressed"]
