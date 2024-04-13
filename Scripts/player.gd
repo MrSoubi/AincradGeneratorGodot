@@ -5,22 +5,26 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-var speed: float = 1000
-var direction: Vector2
+@export var speed: float = 16
+var direction: Vector2 = Vector2(0,0)
 
 func _input(event):
 	if (event.is_action_pressed("moveUp")):
-		direction.y -= 1;
+		direction.y = -1;
 	if (event.is_action_pressed("moveDown")):
-		direction.y += 1;
+		direction.y = 1;
 	if (event.is_action_pressed("moveRight")):
-		direction.x += 1;
+		direction.x = 1;
 	if (event.is_action_pressed("moveLeft")):
-		direction.x -= 1;
+		direction.x = -1;
 	
+	if (event.is_action_released("moveUp") or event.is_action_released("moveDown")):
+		direction.y = 0;
+	if (event.is_action_released("moveRight") or event.is_action_released("moveLeft")):
+		direction.x = 0;
+		
 	direction = direction.normalized();
 
 func _process(delta):
 	position.x += direction.x * delta * speed;
 	position.y += direction.y * delta * speed;
-	direction = Vector2(0, 0)

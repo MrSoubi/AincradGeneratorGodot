@@ -11,6 +11,7 @@ func _on_ui_quit_application():
 	get_tree().quit();
 
 func _on_ui_start_game(newSeed):
+	print("Start")
 	Randomizer.Initialize(newSeed);
 	world.visible = true;
 	tile_map.Gen(1);

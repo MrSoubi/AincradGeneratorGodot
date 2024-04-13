@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc2ybife7qgts"]
+[gd_scene load_steps=3 format=3 uid="uid://573wo18jyjt"]
 
-[ext_resource type="Texture2D" uid="uid://cydsbkbfenh05" path="res://icon.svg" id="1_fu403"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_idyue"]
+[ext_resource type="Texture2D" uid="uid://rf6om5nkpl3f" path="res://Kenney/Character.png" id="2_xu37d"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_idyue")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fu403")
+texture_filter = 1
+texture = ExtResource("2_xu37d")
