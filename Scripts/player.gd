@@ -1,5 +1,6 @@
 extends Node2D
 
+signal arrived_at_dungeon
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,3 +29,8 @@ func _input(event):
 func _process(delta):
 	position.x += direction.x * delta * speed;
 	position.y += direction.y * delta * speed;
+
+
+func _on_area_2d_body_entered(body):
+	if (body is TileMap):
+		arrived_at_dungeon.emit()

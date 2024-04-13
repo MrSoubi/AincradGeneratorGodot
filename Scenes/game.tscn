@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://xqh66xwtpgxe" path="res://Scenes/ui.tscn" id="2_34hcv"]
 [ext_resource type="PackedScene" uid="uid://573wo18jyjt" path="res://Scenes/player.tscn" id="4_gbmti"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("tile_map", "world")]
+[node name="Game" type="Node" node_paths=PackedStringArray("tile_map", "player")]
 script = ExtResource("1_pkbbj")
 tile_map = NodePath("World/TileMap")
-world = NodePath("World")
+player = NodePath("World/Player")
 
 [node name="UI" parent="." instance=ExtResource("2_34hcv")]
 
@@ -22,3 +22,4 @@ position = Vector2(0, 0)
 speed = 64.0
 
 [connection signal="start_game" from="UI" to="." method="_on_ui_start_game"]
+[connection signal="arrived_at_dungeon" from="World/Player" to="." method="_on_player_arrived_at_dungeon"]

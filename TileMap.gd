@@ -19,10 +19,14 @@ func _center():
 func Gen(level: int):
 	size = 36 - level
 	_center()
+	clear()
 	_generateFloor()
 	_generateRiver()
 	_setVillage()
 	_setDungeon()
+
+func getStartingPosition() -> Vector2:
+	return Vector2(8 + position.x + village_Pos.x * 16, 8 + position.y + village_Pos.y * 16);
 
 func _input(event):
 	if event.is_action_pressed("jump"):
