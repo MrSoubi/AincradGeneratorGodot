@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://xqh66xwtpgxe" path="res://Scenes/ui.tscn" id="2_34hcv"]
 [ext_resource type="PackedScene" uid="uid://573wo18jyjt" path="res://Scenes/player.tscn" id="4_gbmti"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("tile_map", "player")]
+[node name="Game" type="Node" node_paths=PackedStringArray("tile_map", "player", "ui")]
 script = ExtResource("1_pkbbj")
 tile_map = NodePath("World/TileMap")
 player = NodePath("World/Player")
+ui = NodePath("UI")
 
 [node name="UI" parent="." instance=ExtResource("2_34hcv")]
 

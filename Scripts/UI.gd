@@ -30,3 +30,6 @@ func _on_button_seed_validation_pressed():
 	start_game.emit(text_edit_seed.text);
 	generation_menu.visible = false;
 	hud.visible = true;
+
+func updateLevel(newLevel: int):
+	$HUD/Container_Top/Label_LevelValue.text = str(newLevel);
