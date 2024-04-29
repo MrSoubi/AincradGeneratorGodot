@@ -8,8 +8,7 @@ extends Node
 var level: int
 
 func _ready():
-	player.visible = false;
-	tile_map.visible = false;
+	world.visible = false;
 	level = 1;
 
 func _on_ui_quit_application():

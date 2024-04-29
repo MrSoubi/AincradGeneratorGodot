@@ -7,7 +7,7 @@
 size = Vector2(16, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tubdj"]
-radius = 9.0
+radius = 22.0227
 
 [node name="Player" type="RigidBody2D"]
 gravity_scale = 0.0
