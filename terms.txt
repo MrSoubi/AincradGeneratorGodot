@@ -1,10 +1,24 @@
-Game : the game itself
-Player : the character controlled by the user
-Level : a square containing a village, a dungeon, a river, a bridge, and in wich the player
-	can walk
-World : the 15 levels generated int he game
-Village : the starting position of every level
-Dungeon : the exit position of every level
-Dirt : just floor
-River : a non walkable part of the level
-Bridge : 3 tiles that the player can walk on to get on the other side of the river
+The generation of each level uses a simplex image and a random number generator.
+
+Generation process :
+	Floor :
+		Fill everything with dirt
+	River :
+		1. Select the tile in the middle of the top row and make it a river tile
+		2. Generate a (size x size) noise image used as a gray scale image
+		3. Select the three pixels underneath the position of the last tile select
+			For example : if the last tile selected was on position (5, 4), the three
+			tiles now selected are on position (4, 5), (5, 5) and (6, 5)
+		4. Compare the grayscale value of these pixels and keep the position of the highest
+			value
+		5. Sets the tile selected as a river
+		6. Repeat from 3 until the bottom of the tilemap
+	Bridge :
+		Select the 3 tiles in the middle of the river and turn it into bridge tiles
+	Village :
+		Place a village in a random position in the bottom part of the tilemap
+	Dungeon :
+		Place a village in a random position in the top part of the tilemap. Replace
+		the dungeon if it falls into the river or too near from the village
+	Borders :
+		Place water tiles all around the level
