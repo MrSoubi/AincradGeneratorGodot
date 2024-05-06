@@ -14,10 +14,10 @@ ui = NodePath("Camera2D/UI")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" parent="Camera2D" instance=ExtResource("2_34hcv")]
-offset_left = -480.0
-offset_top = -270.0
-offset_right = 480.0
-offset_bottom = 270.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 
 [node name="World" type="Node2D" parent="."]
 scale = Vector2(0.8, 0.8)

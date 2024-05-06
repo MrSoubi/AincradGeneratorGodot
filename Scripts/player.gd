@@ -11,7 +11,7 @@ func _ready():
 @export var speed: float = 16
 var direction: Vector2 = Vector2(0,0)
 var tile_position: Vector2i;
-
+var can_move = true;
 
 func _input(event):
 	if (event.is_action_pressed("moveUp")):

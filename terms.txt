@@ -1,0 +1,10 @@
+Game : the game itself
+Player : the character controlled by the user
+Level : a square containing a village, a dungeon, a river, a bridge, and in wich the player
+	can walk
+World : the 15 levels generated int he game
+Village : the starting position of every level
+Dungeon : the exit position of every level
+Dirt : just floor
+River : a non walkable part of the level
+Bridge : 3 tiles that the player can walk on to get on the other side of the river

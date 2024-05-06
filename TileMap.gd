@@ -6,6 +6,7 @@ const dirt_Tile: Vector2i = Vector2i(9, 7)
 const water_Tile: Vector2i = Vector2i(1, 11)
 const village_Tile: Vector2i = Vector2i(11, 15)
 const dungeon_Tile: Vector2i = Vector2i(15, 17)
+const bridge_Tile: Vector2i = Vector2i(10, 17)
 
 var village_Pos: Vector2i;
 var dungeon_Pos: Vector2i;
@@ -16,14 +17,19 @@ func _center():
 	position.x = - (size * 8)
 	position.y = - (size * 8)
 
+func get_limit() -> int:
+	return size * 8
+
 func Gen(level: int):
 	size = 36 - level
 	_center()
 	clear()
 	_generateFloor()
 	_generateRiver()
+	_gen_bridge()
 	_setVillage()
 	_setDungeon()
+	_gen_borders()
 
 func getStartingPosition() -> Vector2:
 	return Vector2(8 + position.x + village_Pos.x * 16, 8 + position.y + village_Pos.y * 16);
@@ -31,6 +37,14 @@ func getStartingPosition() -> Vector2:
 func _input(event):
 	if event.is_action_pressed("jump"):
 		Gen(1);
+
+func _gen_borders():
+	set_cell(0, Vector2i(-1,-1), 0, water_Tile)
+	for i in size+1:
+		set_cell(0, Vector2i(-1,i), 0, water_Tile)
+		set_cell(0, Vector2i(size, i), 0, water_Tile)
+		set_cell(0, Vector2i(i, -1), 0, water_Tile)
+		set_cell(0, Vector2i(i, size), 0, water_Tile)
 
 func _setVillage():
 	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(size/2, size-1))
@@ -44,7 +58,7 @@ func _setVillage():
 func _setDungeon(distanceMin: int = size/2):
 	var pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
 	
-	while (Utils.distanceVector2i(pos, village_Pos) < distanceMin):
+	while (Utils.distanceVector2i(pos, village_Pos) < distanceMin or get_cell_atlas_coords(0, pos) == water_Tile):
 		pos = Vector2i(Randomizer.rng.randi_range(0, size-1), Randomizer.rng.randi_range(0, size/2))
 	
 	dungeon_Pos = pos
@@ -86,3 +100,13 @@ func _generateRiver():
 	
 	for i in river:
 		set_cell(0, i, 0, water_Tile)
+
+func _gen_bridge():
+	for i in size:
+		if get_cell_atlas_coords(0, Vector2(i, floor(size / 2) - 1)) == water_Tile:
+			set_cell(0, Vector2(i, floor(size / 2) - 1), 0, bridge_Tile);
+		if get_cell_atlas_coords(0, Vector2(i, floor(size / 2))) == water_Tile:
+			set_cell(0, Vector2(i, floor(size / 2)), 0, bridge_Tile);
+		if get_cell_atlas_coords(0, Vector2(i, floor(size / 2) + 1)) == water_Tile:
+			set_cell(0, Vector2(i, floor(size / 2) + 1), 0, bridge_Tile);
+	
