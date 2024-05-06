@@ -35,7 +35,6 @@ func _process(delta):
 	tile_position = tile_map.local_to_map(position);
 	tile_position.x += (tile_map.size / 2);
 	tile_position.y += (tile_map.size / 2);
-	$Label.text = str(tile_position.x) + ";" + str(tile_position.y);
 
 
 
